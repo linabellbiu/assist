@@ -27,3 +27,5 @@ func StringToInt(value string) (i int) {
 	i, _ = strconv.Atoi(value)
 	return
 }
+
+//
