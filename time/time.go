@@ -1,4 +1,4 @@
-package Assist
+package time
 
 import "time"
 
