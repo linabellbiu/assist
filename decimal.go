@@ -34,6 +34,11 @@ func Float64ToInt64(value float64) (i int64) {
 	return
 }
 
+func Float64ToString(value float64) (s string) {
+	s = decimal.NewFromFloat(value).String()
+	return
+}
+
 func RoundFloat64(value float64, exp int32) (num float64) {
 	num, _ = decimal.NewFromFloat(value).Round(exp).Float64()
 	return
