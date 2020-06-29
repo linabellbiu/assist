@@ -44,6 +44,11 @@ func RoundFloat64(value float64, exp int32) (num float64) {
 	return
 }
 
+func Int64ToString(value int64) (s string) {
+	s = decimal.New(value, 0).String()
+	return
+}
+
 var A Accuracy = func() float64 { return 0.00000001 }
 
 type Accuracy func() float64
