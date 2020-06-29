@@ -49,6 +49,12 @@ func Int64ToString(value int64) (s string) {
 	return
 }
 
+func IntToFloat64(value int) (f float64) {
+	s, _ := decimal.NewFromString(strconv.Itoa(value))
+	f = StringToFloat64(s.String())
+	return
+}
+
 var A Accuracy = func() float64 { return 0.00000001 }
 
 type Accuracy func() float64
