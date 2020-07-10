@@ -17,3 +17,8 @@ func UnixToTimeFormat(t int64) string {
 	//时间戳转日期
 	return time.Unix(t, 0).Format(timeLayout) //设置时间戳 使用模板格式化为日期字符串
 }
+
+func UnixToTimeFormats(t int64, timeLayout string) string {
+	//时间戳转日期
+	return time.Unix(t, 0).Format(timeLayout) //设置时间戳 使用模板格式化为日期字符串
+}
