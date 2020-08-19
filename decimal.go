@@ -35,7 +35,7 @@ func Float64ToInt64(value float64) (i int64) {
 }
 
 func Float64ToString(value float64) (s string) {
-	return strconv.FormatFloat(value, 'E', -1, 64) //float64
+	return strconv.FormatFloat(value, 'f', -1, 64) //float64
 }
 
 func RoundFloat64(value float64, exp int) (num float64) {
