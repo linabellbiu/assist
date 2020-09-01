@@ -1,7 +1,6 @@
 package assist
 
 import (
-	"fmt"
 	"github.com/shopspring/decimal"
 	"math"
 	"strconv"
@@ -39,12 +38,11 @@ func Float64ToString(value float64) (s string) {
 }
 
 func RoundFloat64(value float64, exp int) (num float64) {
-	floatStr := fmt.Sprintf("%."+strconv.Itoa(exp)+"f", value)
-	num, _ = strconv.ParseFloat(floatStr, 64)
-	return
-
-	//num, _ = decimal.NewFromFloat(value).Round(exp).Float64()
+	//floatStr := fmt.Sprintf("%."+strconv.Itoa(exp)+"f", value)
+	//num, _ = strconv.ParseFloat(floatStr, 64)
 	//return
+	num, _ = decimal.NewFromFloat(value).Round(int32(exp)).Float64()
+	return
 }
 
 func Int64ToString(value int64) (s string) {
