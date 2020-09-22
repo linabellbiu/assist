@@ -56,7 +56,7 @@ func IntToFloat64(value int) (f float64) {
 	return
 }
 
-var A Accuracy = func() float64 { return 0.00000001 }
+var A Accuracy = func() float64 { return 0.000000001 }
 
 type Accuracy func() float64
 
