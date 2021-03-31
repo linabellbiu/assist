@@ -1,4 +1,4 @@
-module assist
+module github.com/wangxudong123/assist
 
 go 1.13
 
