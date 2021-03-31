@@ -1,4 +1,4 @@
-module Assist
+module assist
 
 go 1.13
 
