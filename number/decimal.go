@@ -1,4 +1,4 @@
-package assist
+package number
 
 import (
 	"github.com/shopspring/decimal"
