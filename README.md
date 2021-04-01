@@ -5,16 +5,16 @@
 ```go
 import "github.com/wangxudong123/assist/str"
 ```
-#### 拼接字符串 `func Join(arg ...interface{}) (string, error)`
-```go
-str.Join(p_int,p_int64,p_string)
-```
-
+- 拼接字符串 `func Join(arg ...interface{}) (string, error)`
+    ```go
+    str.Join(p_int,p_int64,p_string)
+    ```
+#
 ## time包
 ```go
 import "github.com/wangxudong123/assist/time"
 ```
-### 时间转换
+#### 时间转换
 - 创建当前时间对象`func NewUnixNow() *theTime`
 
     ```go
