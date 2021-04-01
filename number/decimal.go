@@ -2,11 +2,13 @@ package number
 
 import (
 	"github.com/shopspring/decimal"
-	"math"
 	"strconv"
 )
 
 func StringToFloat64(value string) (f float64) {
+	if value == "" {
+		value = "0"
+	}
 	f, _ = strconv.ParseFloat(value, 64)
 	return
 }
@@ -18,12 +20,18 @@ func Int64ToFloat64(value int64) (f float64) {
 }
 
 func StringToInt64(value string) (i int64) {
+	if value == "" {
+		value = "0"
+	}
 	d, _ := decimal.NewFromString(value)
 	i = d.IntPart()
 	return
 }
 
 func StringToInt(value string) (i int) {
+	if value == "" {
+		value = "0"
+	}
 	i, _ = strconv.Atoi(value)
 	return
 }
@@ -38,9 +46,6 @@ func Float64ToString(value float64) (s string) {
 }
 
 func RoundFloat64(value float64, exp int) (num float64) {
-	//floatStr := fmt.Sprintf("%."+strconv.Itoa(exp)+"f", value)
-	//num, _ = strconv.ParseFloat(floatStr, 64)
-	//return
 	num, _ = decimal.NewFromFloat(value).Round(int32(exp)).Float64()
 	return
 }
@@ -54,33 +59,4 @@ func IntToFloat64(value int) (f float64) {
 	s, _ := decimal.NewFromString(strconv.Itoa(value))
 	f = StringToFloat64(s.String())
 	return
-}
-
-var A Accuracy = func() float64 { return 0.000000001 }
-
-type Accuracy func() float64
-
-//=
-func (this Accuracy) Equal(a, b float64) bool {
-	return math.Abs(a-b) < this()
-}
-
-//>
-func (this Accuracy) Greater(a, b float64) bool {
-	return math.Max(a, b) == a && math.Abs(a-b) > this()
-}
-
-//<
-func (this Accuracy) Smaller(a, b float64) bool {
-	return math.Max(a, b) == b && math.Abs(a-b) > this()
-}
-
-//>=
-func (this Accuracy) GreaterOrEqual(a, b float64) bool {
-	return math.Max(a, b) == a || math.Abs(a-b) < this()
-}
-
-//<=
-func (this Accuracy) SmallerOrEqual(a, b float64) bool {
-	return math.Max(a, b) == b || math.Abs(a-b) < this()
 }
