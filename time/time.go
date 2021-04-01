@@ -8,14 +8,18 @@ type theTime struct {
 	unix int64
 }
 
+//初始化一个当前的时间戳对象
 func NewUnixNow() *theTime {
 	return &theTime{unix: time.Now().Unix()}
 }
 
+//初始化一个时间戳
 func NewUnix(unix int64) *theTime {
 	return &theTime{unix: unix}
 }
 
+//初始化一个时间
+//格式是yyyy-mm-dd H:i:s
 func NewFormat(t string) (*theTime, error) {
 	timeLayout := "2006-01-02 15:04:05"
 	loc := time.FixedZone("CST", 8*3600)
@@ -26,6 +30,7 @@ func NewFormat(t string) (*theTime, error) {
 	return &theTime{unix: tt.Unix()}, nil
 }
 
+//初始化一个iso8601的时间
 func NewISO8601(iso8601 string) (*theTime, error) {
 	t, err := time.ParseInLocation(time.RFC3339, iso8601, time.UTC)
 	if err != nil {
