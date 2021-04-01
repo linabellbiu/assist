@@ -44,7 +44,7 @@ func (t *theTime) ToUnix() int64 {
 }
 
 func (t *theTime) ToFormat() string {
-	return t.ToFormatForTpl("2006-01-02 15:04:05")
+	return time.Unix(t.unix, 0).Format("2006-01-02 15:04:05")
 }
 
 func (t *theTime) ToFormatForTpl(tpl string) string {
@@ -52,5 +52,5 @@ func (t *theTime) ToFormatForTpl(tpl string) string {
 }
 
 func (t *theTime) ToIso8601() string {
-	return t.ToFormatForTpl(time.RFC3339)
+	return time.Unix(t.unix, 0).Format(time.RFC3339)
 }
