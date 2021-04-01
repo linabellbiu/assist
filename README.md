@@ -34,9 +34,7 @@ import "github.com/wangxudong123/assist/time"
 - 创建iso8601时间对象`NewISO8601(iso8601 string) (*theTime, error)`
     ```go
     NewIso8601("2019-09-11T01:54:23+00:00")
-    ```  
-
-###  时间转换
+    ```
 - 格式化时间 `func (t *theTime) ToFormat() string`
 
 - 转时间戳 `func (t *theTime) ToUnix() int64`
