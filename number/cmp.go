@@ -10,9 +10,13 @@ import (
 type Cmp func(float64, float64) int
 
 type number struct {
-	Cmp Cmp
-	n   []interface{}
+	Cmp   Cmp
+	n     []interface{}
+	order string
 }
+
+const orderDesc = "desc"
+const orderAsc = "asc"
 
 var Cpm Cmp = func(l, r float64) int {
 	_l := decimal.NewFromFloat(l)
@@ -62,40 +66,50 @@ func (c Cmp) SmallerOrEqual(l, r float64) bool {
 
 func (n number) Len() int { return len(n.n) }
 
-func (n number) Less(i, j int) bool { return n.Cmp.GreaterOrEqual(toFloat(n.n[i]), toFloat(n.n[j])) }
-
 func (n number) Swap(i, j int) { n.n[i], n.n[j] = n.n[j], n.n[i] }
 
-//从大到小
-func OrderDesc() {
-
+func (n number) Less(i, j int) bool {
+	if n.order == orderAsc {
+		return n.Cmp.SmallerOrEqual(toFloat(n.n[i]), toFloat(n.n[j]))
+	}
+	return n.Cmp.GreaterOrEqual(toFloat(n.n[i]), toFloat(n.n[j]))
 }
 
-//从小到大
-func OrderAsc() {
+func NewNumbers(n ...interface{}) number {
+	return number{
+		Cmp: Cpm,
+		n:   n,
+	}
+}
 
+//从大到小排序
+//数组可以包含float64,float32,int,int64,int32
+func (n number) OrderDesc() []interface{} {
+	n.order = orderDesc
+	sort.Sort(n)
+	return n.n
+}
+
+//从小到大排序
+//数组可以包含float64,float32,int,int64,int32
+func (n number) OrderAsc() []interface{} {
+	n.order = orderAsc
+	sort.Sort(n)
+	return n.n
 }
 
 //找出数组中最大的数字
 //数组可以包含float64,float32,int,int64,int32
-func Max(n ...interface{}) float64 {
-	num := number{
-		Cpm,
-		n,
-	}
-	sort.Sort(num)
-	return toFloat(num.n[0])
+func (n number) Max() float64 {
+	_arr := n.OrderDesc()
+	return toFloat(_arr[0])
 }
 
 //找出数组中最小的数字
 //数组可以包含float64,float32,int,int64,int32
-func Min(n ...interface{}) float64 {
-	num := number{
-		Cpm,
-		n,
-	}
-	sort.Sort(num)
-	return toFloat(num.n[len(n)-1])
+func (n number) Min() float64 {
+	_arr := n.OrderAsc()
+	return toFloat(_arr[0])
 }
 
 func toFloat(val interface{}) float64 {
@@ -115,5 +129,4 @@ func toFloat(val interface{}) float64 {
 	default:
 		panic(fmt.Sprintf("%s to string:Unsupported type conversion", reflect.TypeOf(val)))
 	}
-	return 0
 }
