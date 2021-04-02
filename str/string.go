@@ -15,6 +15,14 @@ func Join(arg ...interface{}) (string, error) {
 	if len(arg) == 0 {
 		return "", nil
 	}
+	if len(arg) == 1 {
+		str, err := toString(arg[0])
+		if err != nil {
+			e := fmt.Sprintf("arg %d:%s", 1, err.Error())
+			return "", errors.New(e)
+		}
+		return str, nil
+	}
 	var s strings.Builder
 	for index, str := range arg {
 		str, err := toString(str)
