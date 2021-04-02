@@ -33,7 +33,7 @@ import "github.com/wangxudong123/assist/number"
 #### 浮点型数字比较
 - 左 = 右`func (c Cmp) Equal(l, r float64) bool`
   ```go
-  res := Cpm.Greater(3, 2)
+  res := Cpm.Equal(3, 3)
   t.Log(res) //true
   ```
 - 左 > 右`func (c Cmp) Greater(l, r float64) bool`
