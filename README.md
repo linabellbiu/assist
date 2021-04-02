@@ -25,7 +25,8 @@ import "github.com/wangxudong123/assist/number"
 
 - int64转float64`func IntToFloat64(value int) (f float64)`
 
-#### 保留小数位 `func RoundFloat64(value float64, exp int) (num float64)`
+#### 处理小数位 
+- 保留小数位`func RoundFloat64(value float64, exp int) (num float64)`
   > exp 保留的位数 
 
 
@@ -81,10 +82,11 @@ import "github.com/wangxudong123/assist/number"
 ```go
 import "github.com/wangxudong123/assist/str"
 ```
-#### 拼接字符串 `func Join(arg ...interface{}) (string, error)`
-
+#### 字符串处理
+- 拼接字符串`func Join(arg ...interface{}) (string, error)`
+  
   ```go
-  str.Join(p_int,p_int64,p_string)
+  Join(p_int,p_int64,p_string)
   ```
 #
 ## time包
