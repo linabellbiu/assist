@@ -1,6 +1,14 @@
 # go 工具集
 未完待续...
 
+## number包
+```go
+import "github.com/wangxudong123/assist/number"
+
+```
+<!-- Todo -->
+
+
 ## str包
 ```go
 import "github.com/wangxudong123/assist/str"
