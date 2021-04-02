@@ -69,10 +69,11 @@ func (n number) Len() int { return len(n.n) }
 func (n number) Swap(i, j int) { n.n[i], n.n[j] = n.n[j], n.n[i] }
 
 func (n number) Less(i, j int) bool {
+	l, r := toFloat(n.n[i]), toFloat(n.n[j])
 	if n.order == orderAsc {
-		return n.Cmp.SmallerOrEqual(toFloat(n.n[i]), toFloat(n.n[j]))
+		return n.Cmp.SmallerOrEqual(l, r)
 	}
-	return n.Cmp.GreaterOrEqual(toFloat(n.n[i]), toFloat(n.n[j]))
+	return n.Cmp.GreaterOrEqual(l, r)
 }
 
 func NewNumbers(n ...interface{}) number {
