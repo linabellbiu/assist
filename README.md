@@ -2,6 +2,15 @@
 未完待续...
 
 
+## file包
+```go
+import "github.com/wangxudong123/assist/file"
+```
+
+#### 文件处理 
+
+  - 写文件 `func WriteFile(path, msg string, flag int, perm os.FileMode) error`
+
 ## number包
 
 ```go
